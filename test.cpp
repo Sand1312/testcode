@@ -27,3 +27,54 @@ int main() {
     }
     cout<<ans;
 }
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+// const int mod=1e9+7;
+// class So_nguyen_duong{
+// private:
+//     int giatri;
+// public:
+//     void nhapGiatri(){
+//         cin>>giatri;
+//     }
+//     void xuatGiatri(){
+//         cout<<giatri;
+//     }
+//     int giaithua(vector <long long> *v){
+//         return (v->operator[](giatri));
+//     }
+// };
+// signed main () {
+//     ios_base::sync_with_stdio(false);
+//     cin.tie(nullptr); cout.tie(nullptr);
+// //    freopen("input.txt", "r", stdin);
+// //    freopen("output.txt", "w", stdout);
+//     long long res{};
+//     vector <long long> *v = new vector<long long>;
+//     v->push_back(1);
+//         for (int i=1;i<mod-6;i++) {
+//             v->push_back(v->operator[](i-1)*i);
+//             v->operator[](i)%=mod;
+//         }
+//     cout<<"Nhap n: ";
+//     int n;cin>>n;
+//     So_nguyen_duong *oj1= new So_nguyen_duong[n];
+//     for (int i=0;i<n;i++){
+//         cout<<"nhap vao gia tri thu "<<i+1<<": ";
+//         (oj1+i)->nhapGiatri();
+//         res+=(oj1+i)->giaithua(v);
+//         res%=mod;
+//     }
+//     fflush(stdin);
+//     cout<<"Tong giai thua cua ";
+//     for (int i=0;i<n;i++) {
+//         (oj1+i)->xuatGiatri();
+//         cout<<"!";
+//         cout<<"+="[i==n-1];
+//     }
+//     cout<<res;
+//     delete [] oj1;
+//     delete  v;
+//     return 0;
+// }
