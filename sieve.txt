@@ -1,0 +1,32 @@
+There's a popular blog on CodeForces that lays out a lot of important Sieves (The Divisor Sieve, the Euler Phi Function Sieve, the Sieve of Eratosthenes, etc...). There's one important augmentation to the Sieve of Eratosthenes that was missing however. It's possible to speed-up factorization of integers with a sieve.
+
+Let smf[i] denote the smallest prime factor of i.
+# Initialize sequences.
+smf[1 .. N] := {N, ..., N}
+composite[1 .. N] := {false, ..., false}
+
+# The empty product
+smf[1] := 1
+
+# Optimized Sieve of Eratosthenes
+# First Handle the even integers
+smf[2] := 2
+for i in [4, 6, ..., N]:
+    composite[i] := true
+    smf[i] := 2
+
+# Handle the odd numbers now.
+for i in [3, 5, ..., N]:
+    if not composite[i]:
+        smf[i] := i
+        for j in [i*i, i*i + 2*i, i*i + 4*i, ..., N]:
+            composite[j] := true
+            smf[j] := min(smf[j], i)
+Note that since we're doing i*i in the inner loop, we have to be cautious about overflow. After this sieve is done, factoring an integer in [1 .. N] is straightforward:
+factor(n):
+    while n > 1:
+        print smf[n]
+        n := n / smf[n]
+If N ~ 10^9, the worst case is 29 steps corresponding to the factorization of 2^29. Usually, this kind of factor sieve is beneficial when N is no more than 10^8. On CodeForces, sieving up to a billion within the typical 2 second time limit isn't as feasible as it is when solving problems on Project Euler within the One Minute Rule.
+There are a lot of more important sieves, like the Möbius function sieve. That one's pretty useful when you want to solve problems like Project Euler #193.
+Anyway, I hope someone would find this useful.
